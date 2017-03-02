@@ -7,19 +7,49 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SoundViewController: UIViewController {
 
     
     @IBOutlet weak var recordButton: UIButton!
-    
     @IBOutlet weak var nameTextField: UITextField!
+    
+    var audioRecorder : AVAudioRecorder? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupRecorder()
     }
+    
+    
+    func setupRecorder() {
+        do {
+        // Create an audio session
+        let session = AVAudioSession.sharedInstance()
+        try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        try session.overrideOutputAudioPort(.speaker)
+        try session.setActive(true)
+        
+        
+        // Create URL for the audio file
+        
+        
+        // Create settings for the audio recorder
+        
+        
+        // Create AudioRecroder object
+        
+        audioRecorder = AVAudioRecorder(url: <#T##URL#>, settings: <#T##[String : Any]#>)
+        } catch let error as NSError{
+            print(error)
+            
+        }
+    }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
